@@ -28,7 +28,6 @@ export const addContact = ({ name, number }) => (dispatch) => {
 
 // Видалення
 export const deleteContact = (id) => (dispatch) => {
-  console.log("deleteContact>>", id);
   dispatch(actions.delContactRequest());
 
   axios

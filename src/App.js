@@ -1,32 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
-import Filter from "./components/Filter/Filter";
-import ContactList from "./components/ContactList/ContactList";
-import ContactForm from "./components/ContactForm/ContactForm";
-import Nothing from "./components/Nothing";
-import Loader from "./components/Loader.jsx";
-import * as selectors from "./redux/contacts/contacts-selectors";
-import css from "./App.module.css";
+import { Route, Switch } from "react-router-dom";
+import Container from "./components/Container";
+import AppBar from "./components/AppBar";
+import HomeView from "./views/HomeView";
+import ContactsView from "./views/ContactsView";
+import RegisterView from "./views/RegisterView";
+import LoginView from "./views/LoginView";
 
-const App = ({ contacts, isLoading }) => {
+const App = () => {
   return (
-    <div className={css.wrapper}>
-      <ContactForm />
+    <Container>
+      <AppBar />
 
-      {contacts.length === 0 && <Nothing />}
-
-      {contacts.length > 1 && <Filter />}
-
-      {isLoading && <Loader />}
-
-      {<ContactList />}
-    </div>
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+        <Route path="/register" component={RegisterView} />
+        <Route path="/login" component={LoginView} />
+        <Route path="/contacts" component={ContactsView} />
+        {/* <Route path="/todos" component={TodosView} /> */}
+      </Switch>
+    </Container>
   );
 };
 
-const mapStateToProps = (state) => ({
-  contacts: selectors.getContacts(state),
-  isLoading: selectors.getLoading(state),
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

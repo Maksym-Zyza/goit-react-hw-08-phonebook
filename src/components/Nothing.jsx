@@ -1,12 +1,9 @@
-import React from 'react';
-import css from '../App.module.css';
+import React from "react";
 
 const Nothing = () => {
   return (
     <div>
-      <h2 className={css.message}>
-        Nothing, please start creating your contact
-      </h2>
+      <h2 className="message">Nothing, please start creating your contact</h2>
     </div>
   );
 };
