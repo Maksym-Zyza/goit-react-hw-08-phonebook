@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Container from "./components/Container";
 import AppBar from "./components/AppBar";
@@ -8,6 +8,8 @@ import ContactsView from "./views/ContactsView";
 import RegisterView from "./views/RegisterView";
 import LoginView from "./views/LoginView";
 import * as authOperations from "./redux/auth/auth-operations";
+import PrivateRaute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,10 +22,24 @@ class App extends React.Component {
         <AppBar />
 
         <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/contacts" component={ContactsView} />
+          <PublicRoute exact path="/" component={HomeView} />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo={"/contacts"}
+            component={RegisterView}
+          />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo={"/contacts"}
+            component={LoginView}
+          />
+          <PrivateRaute
+            path="/contacts"
+            redirectTo={"/login"}
+            component={ContactsView}
+          />
           {/* <Route path="/todos" component={TodosView} /> */}
         </Switch>
       </Container>

@@ -2,7 +2,7 @@ import React from "react";
 
 const HomeView = () => (
   <div className="wrapper">
-    <h1 className="home-view-title">Cloud phonebook</h1>
+    <h1 className="home-view-title">Phonebook</h1>
     <h2 className="home-view-subtitle">
       Your contacts in one place{" "}
       <span role="img" aria-label="Иконка приветствия">

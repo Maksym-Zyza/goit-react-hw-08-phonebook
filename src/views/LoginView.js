@@ -25,7 +25,7 @@ class LoginView extends Component {
 
     return (
       <div className="wrapper">
-        <h1 className="title">Enter your login and password</h1>
+        <h1 className="title">Please enter your login and password</h1>
 
         <form
           onSubmit={this.handleSubmit}
