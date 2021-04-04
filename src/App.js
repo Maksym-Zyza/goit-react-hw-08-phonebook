@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Container from "./components/Container";
 import AppBar from "./components/AppBar";
-import HomeView from "./views/HomeView";
-import ContactsView from "./views/ContactsView";
-import RegisterView from "./views/RegisterView";
-import LoginView from "./views/LoginView";
 import * as authOperations from "./redux/auth/auth-operations";
 import PrivateRaute from "./components/PrivateRoute";
 import PublicRoute from "./components/PublicRoute";
+import ViwsLoader from "./components/LoaderViws";
+
+const HomeView = lazy(() => import("./views/HomeView"));
+const ContactsView = lazy(() => import("./views/ContactsView"));
+const RegisterView = lazy(() => import("./views/RegisterView"));
+const LoginView = lazy(() => import("./views/LoginView"));
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,27 +23,29 @@ class App extends React.Component {
       <Container>
         <AppBar />
 
-        <Switch>
-          <PublicRoute exact path="/" component={HomeView} />
-          <PublicRoute
-            path="/register"
-            restricted
-            redirectTo={"/contacts"}
-            component={RegisterView}
-          />
-          <PublicRoute
-            path="/login"
-            restricted
-            redirectTo={"/contacts"}
-            component={LoginView}
-          />
-          <PrivateRaute
-            path="/contacts"
-            redirectTo={"/login"}
-            component={ContactsView}
-          />
-          {/* <Route path="/todos" component={TodosView} /> */}
-        </Switch>
+        <Suspense fallback={<ViwsLoader />}>
+          <Switch>
+            <PublicRoute exact path="/" component={HomeView} />
+            <PublicRoute
+              path="/register"
+              restricted
+              redirectTo={"/contacts"}
+              component={RegisterView}
+            />
+            <PublicRoute
+              path="/login"
+              restricted
+              redirectTo={"/contacts"}
+              component={LoginView}
+            />
+            <PrivateRaute
+              path="/contacts"
+              redirectTo={"/login"}
+              component={ContactsView}
+            />
+            {/* <Route path="/todos" component={TodosView} /> */}
+          </Switch>
+        </Suspense>
       </Container>
     );
   }

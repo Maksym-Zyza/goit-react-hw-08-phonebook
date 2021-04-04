@@ -142,11 +142,17 @@ img {
 }
 
 /* Loader */
+.loaderViws {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+}
+
 .loaderDiv {
   display: flex;
   height: 32px;
   justify-content: center;
-  /* align-items: center; */
 }
 
 /* Forms */
