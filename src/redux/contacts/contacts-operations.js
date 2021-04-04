@@ -1,7 +1,8 @@
 import axios from "axios";
 import * as actions from "./contacts-actions";
 
-axios.defaults.baseURL = "http://localhost:3000";
+// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
 
 // Оновлення
 export const fetchContacts = () => async (dispatch) => {
@@ -10,7 +11,7 @@ export const fetchContacts = () => async (dispatch) => {
     const { data } = await axios.get("/contacts");
     dispatch(actions.fetchContactSuccess(data));
   } catch (error) {
-    dispatch(actions.fetchContactError(error));
+    dispatch(actions.fetchContactError(error.message));
   }
 };
 
@@ -23,7 +24,7 @@ export const addContact = ({ name, number }) => (dispatch) => {
   axios
     .post("/contacts", contacts)
     .then(({ data }) => dispatch(actions.addContactSuccess(data)))
-    .catch((error) => dispatch(actions.addContactError(error)));
+    .catch((error) => dispatch(actions.addContactError(error.message)));
 };
 
 // Видалення
@@ -33,7 +34,7 @@ export const deleteContact = (id) => (dispatch) => {
   axios
     .delete(`/contacts/${id}`)
     .then(() => dispatch(actions.delContactSuccess(id)))
-    .catch((error) => dispatch(actions.delContactError(error)));
+    .catch((error) => dispatch(actions.delContactError(error.message)));
 };
 
 // ===============
@@ -43,5 +44,5 @@ export const deleteContact = (id) => (dispatch) => {
 //   axios
 //     .get("/contacts")
 //     .then(({ data }) => dispatch(actions.fetchContactSuccess(data)))
-//     .catch((error) => dispatch(actions.fetchContactError(error)));
+//     .catch((error) => dispatch(actions.fetchContactError(error.message)));
 // };

@@ -1,8 +1,9 @@
 import axios from "axios";
 import * as authActions from "./auth-actions";
 
-axios.defaults.baseURL = "https://lpj-tasker.herokuapp.com";
+axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
 
+// В заголовок авторизации ставим и снимаем токен :
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -100,4 +101,3 @@ export const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
-
