@@ -1,4 +1,5 @@
 import React from "react";
+import homePageImg from "../img/home.jpg";
 
 const HomeView = () => (
   <div className="wrapper">
@@ -9,11 +10,7 @@ const HomeView = () => (
         💁‍♀️
       </span>
     </h2>
-    <img
-      className="home-view-img"
-      src="https://cdn.lifehacker.ru/wp-content/uploads/2018/01/Kak-perenesti-kontakty-s-odnogo-telefona-na-drugoJ_1516567189-1140x570.jpg"
-      alt="home_view_img"
-    />
+    <img className="home-view-img" src={homePageImg} alt="home_view_img" />
   </div>
 );
 

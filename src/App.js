@@ -43,7 +43,6 @@ class App extends React.Component {
               redirectTo={"/login"}
               component={ContactsView}
             />
-            {/* <Route path="/todos" component={TodosView} /> */}
           </Switch>
         </Suspense>
       </Container>

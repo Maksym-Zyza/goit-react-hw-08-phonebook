@@ -19,15 +19,6 @@ const Navigation = ({ isAuthenticated }) => (
         Contacts
       </NavLink>
     )}
-
-    {/* <NavLink
-      to="/todos"
-      exact
-      className="link" 
-      activeClassName="activeLink"
-    >
-      Заметки
-    </NavLink> */}
   </nav>
 );
 

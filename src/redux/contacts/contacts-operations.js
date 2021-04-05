@@ -1,7 +1,6 @@
 import axios from "axios";
 import * as actions from "./contacts-actions";
 
-// axios.defaults.baseURL = "http://localhost:3000";
 axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
 
 // Оновлення
@@ -46,3 +45,5 @@ export const deleteContact = (id) => (dispatch) => {
 //     .then(({ data }) => dispatch(actions.fetchContactSuccess(data)))
 //     .catch((error) => dispatch(actions.fetchContactError(error.message)));
 // };
+
+// axios.defaults.baseURL = "http://localhost:3000";

@@ -46,6 +46,13 @@ img {
   padding-right: 60px;
 }
 
+@media screen and (max-width: 900px) {
+  .Container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 /* Navigation */
 .header {
   display: flex;

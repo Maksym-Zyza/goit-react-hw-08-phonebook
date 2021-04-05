@@ -6,7 +6,7 @@ const items = createReducer([], {
   [actions.fetchContactSuccess]: (_, { payload }) => payload,
   [actions.addContactSuccess]: (state, { payload }) => [...state, payload],
   [actions.delContactSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== Number(payload)),
+    state.filter(({ id }) => id !== payload),
 });
 
 const filter = createReducer("", {

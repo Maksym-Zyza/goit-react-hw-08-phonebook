@@ -14,15 +14,15 @@ class ContactList extends React.Component {
     const { contacts, onDelBtnClick } = this.props;
     return (
       <ul>
-        {contacts.map((contact) => (
-          <li key={contact.id} className={style.listItem}>
-            <span className={style.name}>{contact.name}:</span>
-            <span className={style.namber}>{contact.number}</span>
+        {contacts.map(({ id, name, number }) => (
+          <li key={id} className={style.listItem}>
+            <span className={style.name}>{name}:</span>
+            <span className={style.namber}>{number}</span>
             <button
               className={style.btn}
               type="button"
-              id={contact.id}
-              onClick={(event) => onDelBtnClick(event.target.id)}
+              id={id}
+              onClick={() => onDelBtnClick(id)}
             >
               Delete
             </button>
